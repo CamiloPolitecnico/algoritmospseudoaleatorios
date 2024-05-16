@@ -28,7 +28,7 @@ class Validaciones:
                 flag = False
         return semilla
     
-    def validar_ingreso_constante(self, mensaje):
+    def validar_ingreso_constante(self, mensaje, primo = False):
         print(mensaje)
         flag = True
         global resultado
@@ -36,6 +36,9 @@ class Validaciones:
             numeroInput = input()
             if(not(self.solo_numeros(numeroInput)) or int(numeroInput)<0):
                 print("Error, Numero invalido.")
+                print(mensaje)
+            elif(primo and not(self.es_primo(numeroInput))):
+                print("Error, Numero invalido. No es primo")
                 print(mensaje)
             else:
                 resultado = int(numeroInput)
@@ -50,9 +53,21 @@ class Validaciones:
             numeroInput = input()
             mayor = all(int(numeroInput) > num for num in array)
             if(not(self.solo_numeros(numeroInput)) or not(mayor)) :
-                print("Error, Numero invalido.")
+                print("Error, Número invalido.")
                 print(mensaje)
             else:
                 resultado = int(numeroInput)
                 flag = False
         return resultado
+    
+    def es_primo(self, numero):
+        if int(numero) <= 1:
+            return False
+        if int(numero) == 2:
+            return True
+        if int(numero) % 2 == 0:
+            return False
+        for i in range(3, int(int(numero)**0.5) + 1, 2):
+            if int(numero) % i == 0:
+                return False
+        return True

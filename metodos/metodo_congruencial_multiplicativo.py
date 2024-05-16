@@ -1,7 +1,7 @@
 from utilidades import Utilidades
 from validaciones import Validaciones
 
-class MetodoCongruencialLineal:
+class MetodoCongruencialMultiplicativo:
     def __init__(self):
         self.a = 0
         self.c = 0
@@ -25,11 +25,10 @@ class MetodoCongruencialLineal:
     def procesar_aleatorio(self):
         v = Validaciones()
         u = Utilidades
-        print("Algoritmo congruencial lineal\n")
-        self.a = v.validar_ingreso_constante("\nIngrese constante a, mayor a cero\nPara certificar la generacion optima de los aleatorios tambien se requiere que a sea un numero primo", True)
-        self.c = v.validar_ingreso_constante("\nIngrese constante c, mayor a cero")
+        print("Algoritmo congruencial multiplicativo\n")
+        self.a = v.validar_ingreso_constante("\nIngrese constante 'a', mayor a cero\nPara certificar la generacion optima de los aleatorios tambien se requiere que 'a' sea un numero primo", True)
         self.semilla = v.validar_ingreso_constante("\nIngrese semilla, mayor a cero")
-        self.m = v.validar_ingreso_constante_m("\nIngrese constante para modulo m, debe ser mayor a la semilla, a y c.", [self.a, self.c, self.semilla])
+        self.m = v.validar_ingreso_constante_m("\nIngrese constante para modulo m, debe ser mayor a la semilla y 'a'", [self.a, self.c, self.semilla])
         
         print("\nIngrese cantidad de numeros aleatorios a generar")
         cant_aleatorios = int(input())
