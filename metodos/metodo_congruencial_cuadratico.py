@@ -28,7 +28,7 @@ class MetodoCongruencialCuadratico:
     def procesar_aleatorio(self):
         v = Validaciones()
         u = Utilidades
-        print("\nAlgoritmo congruencial lineal")
+        print("\nAlgoritmo congruencial no lineal")
         self.g = v.validar_ingreso_constante("\nIngrese constante g, mayor a cero.")
         self.a = v.validar_ingreso_constante("\nIngrese constante a, mayor a cero. La constante a debe ser un numero par.", False, False, True)
         self.b = self.a + 1
