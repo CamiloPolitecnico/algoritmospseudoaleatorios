@@ -12,17 +12,13 @@ class MetodoCongruencialLineal:
         
     def generar_array_inicial(self, cant_aleatorios):
         array_inicial = [0] * cant_aleatorios
-        array_inicial[0]= self.semilla
-        for x in range(1, cant_aleatorios):
-            num = ( (self.a*array_inicial[x-1]) + self.c) % self.m
+        for x in range(cant_aleatorios):
+            if(x == 0):
+                num = ( (self.a*self.semilla) + self.c) % self.m
+            else:
+                num = ( (self.a*array_inicial[x-1]) + self.c) % self.m
             array_inicial[x] = num
         return array_inicial
-    
-    def generar_array_pseudoaleatorio(self, array_inicial):
-        array_pseudoaleatorio = [0] * len(array_inicial)
-        for x in range(len(array_inicial)):
-            array_pseudoaleatorio[x] = array_inicial[x]/(self.m-1)
-        return array_pseudoaleatorio
     
     def procesar_aleatorio(self):
         v = Validaciones()
@@ -39,7 +35,7 @@ class MetodoCongruencialLineal:
         cant_aleatorios = int(input())
         
         array_inicial = self.generar_array_inicial(cant_aleatorios)
-        array_pseudoaleatorios = self.generar_array_pseudoaleatorio(array_inicial)
+        array_pseudoaleatorios = u.generar_array_pseudoaleatorio_congruencial(array_inicial, self.m)
         u.imprimir_respuesta(array_pseudoaleatorios)
         
     

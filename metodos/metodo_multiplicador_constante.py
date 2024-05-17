@@ -9,24 +9,20 @@ class MetodoMultiplicadorConstante:
     def generar_array_inicial(self, num_cifras, cant_aleatorios):
         array_inicial = [0] * cant_aleatorios
         u = Utilidades
-        array_inicial[0]= self.semilla
-        for x in range(1, cant_aleatorios):
-            num_mult = array_inicial[x-1] * self.constante
+        for x in range(cant_aleatorios):
+            if(x==0):
+                num_mult = self.semilla * self.constante
+            else:
+                num_mult = array_inicial[x-1] * self.constante
             cifras_centrales = u.obtener_cifras_centrales(num_mult, num_cifras)
             array_inicial[x] = int(cifras_centrales)
         return array_inicial
-    
-    def generar_array_pseudoaleatorio(self, array_inicial, cifras):
-        array_pseudoaleatorio = [0] * len(array_inicial)
-        for x in range(len(array_inicial)):
-            array_pseudoaleatorio[x] = array_inicial[x]/pow(10, int(cifras))
-        return array_pseudoaleatorio
     
     def procesar_aleatorio(self):
         v = Validaciones()
         u = Utilidades
         
-        print("\nMetodo multiplicador constante")
+        print("\Algoritmo no congruencial multiplicador constante")
         
         self.constante = v.validar_ingreso_semilla(4, "Por favor ingrese constante, recuerde numero positivo de 4 cifras o mayor")
         cifras = len(str(self.constante))
@@ -38,5 +34,5 @@ class MetodoMultiplicadorConstante:
         cant_aleatorios = int(input())
         cifras = len(str(self.semilla))
         array_inicial = self.generar_array_inicial(cifras, cant_aleatorios)
-        array_pseudoaleatorios = self.generar_array_pseudoaleatorio(array_inicial, cifras)
+        array_pseudoaleatorios = u.generar_array_pseudoaleatorio_no_congruencial(array_inicial, cifras)
         u.imprimir_respuesta(array_pseudoaleatorios)

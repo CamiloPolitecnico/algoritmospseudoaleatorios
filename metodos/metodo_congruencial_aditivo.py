@@ -58,5 +58,5 @@ class MetodoCongruencialAditivo:
         cant_aleatorios = int(input())
         
         array_inicial = self.generar_array_inicial(cant_aleatorios)
-        array_pseudoaleatorios = self.generar_array_pseudoaleatorio(array_inicial, cant_aleatorios)
+        array_pseudoaleatorios = u.generar_array_pseudoaleatorio(array_inicial, cant_aleatorios)
         u.imprimir_respuesta(array_pseudoaleatorios)
