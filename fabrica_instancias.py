@@ -1,3 +1,5 @@
+from metodos.metodo_congruencial_aditivo import MetodoCongruencialAditivo
+from metodos.metodo_congruencial_cuadratico import MetodoCongruencialCuadratico
 from metodos.metodo_congruencial_lineal import MetodoCongruencialLineal
 from metodos.metodo_congruencial_multiplicativo import MetodoCongruencialMultiplicativo
 from metodos.metodo_multiplicador_constante import MetodoMultiplicadorConstante
@@ -18,4 +20,8 @@ class FabricaInstancias:
                 return MetodoCongruencialLineal()
             case 5:
                 return MetodoCongruencialMultiplicativo()
+            case 6:
+                return MetodoCongruencialAditivo()
+            case 7:
+                return MetodoCongruencialCuadratico()
     
